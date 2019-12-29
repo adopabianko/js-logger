@@ -9,5 +9,5 @@ npm install
 ```
 
 ```bash
-node indes.js
+node index.js
 ```
