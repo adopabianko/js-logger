@@ -9,5 +9,5 @@ npm install
 ```
 
 ```bash
-node index.js
+node example.js
 ```
