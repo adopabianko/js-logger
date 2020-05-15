@@ -17,7 +17,7 @@ function createLog(dataLog) {
             if (err) {
                 console.log("Failed to create folder");
             } else {
-                if (fs.existsSync(path + '/' +filename)) { // Pengecekan apakah file sudah ada atau belum
+                if (fs.existsSync(filename)) { // Pengecekan apakah file sudah ada atau belum
                     updateFile(dataLog);
                 } else {
                     createFile(dataLog);
