@@ -17,7 +17,11 @@ function createLog(dataLog) {
             if (err) {
                 console.log("Failed to create folder");
             } else {
-                createFile(dataLog);
+                if (fs.existsSync(path + '/' +filename)) { // Pengecekan apakah file sudah ada atau belum
+                    updateFile(dataLog);
+                } else {
+                    createFile(dataLog);
+                }
             }
         });
     }
@@ -28,7 +32,18 @@ function createLog(dataLog) {
  * @param array dataLog
  */
 function createFile(dataLog) {
-    let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + '] ' + '[' + dataLog[0] + ']' + ' - ' + dataLog[1] + ' - ' + dataLog[2] + ' - ' + JSON.stringify(dataLog[3]) + ' - ' + JSON.stringify(dataLog[4]) + "\n";
+    let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + ']';
+
+    for (let i = 0; i < dataLog.length; i++) {
+        if (Object.getPrototypeOf(dataLog[i]) === Object.prototype) {
+            dataLog[i] = JSON.stringify(dataLog[i]);
+        }
+        
+        format_log += ' - ' + '[' + dataLog[i] + ']';
+    }
+
+    format_log += "\n";
+    
     fs.writeFile(path + '/' + filename, format_log, (err) => {
         if (err) console.log(err);
 
@@ -41,7 +56,18 @@ function createFile(dataLog) {
  * @param array dataLog
  */
 function updateFile(dataLog) {
-    let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + '] ' + '[' + dataLog[0] + ']' + ' - ' + dataLog[1] + ' - ' + dataLog[2] + ' - ' + JSON.stringify(dataLog[3]) + ' - ' + JSON.stringify(dataLog[4]) + "\n";
+    let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + ']';
+
+    for (let i = 0; i < dataLog.length; i++) {
+        if (Object.getPrototypeOf(dataLog[i]) === Object.prototype) {
+            dataLog[i] = JSON.stringify(dataLog[i]);
+        }
+
+        format_log += ' - ' + '[' + dataLog[i] + ']';
+    }
+
+    format_log += "\n";
+
     fs.appendFile(path + '/' + filename, format_log, (err) => {
         if (err) console.log(err);
 

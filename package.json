@@ -1,0 +1,19 @@
+{
+  "name": "js-logger",
+  "version": "1.0.0",
+  "description": "## Setup",
+  "main": "example.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adopabianko/js-logger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adopabianko/js-logger/issues"
+  },
+  "homepage": "https://github.com/adopabianko/js-logger#readme"
+}
