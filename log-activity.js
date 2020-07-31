@@ -5,7 +5,7 @@ const mkdirp = require('mkdirp');
 let path = './logs/' + moment().format('YYYY') + '/' + moment().format('MM'); // Directory logs
 let filename = 'log_api_' + moment().format('DDMMYYYY') + '.log'; // Filename log
 
-function createLog(dataLog) {
+exports.createLog = (dataLog) => {
     if (fs.existsSync(path)) { // Pengecekan apakah folder sudah ada atau belum
         if (fs.existsSync(path + '/' +filename)) { // Pengecekan apakah file sudah ada atau belum
             updateFile(dataLog);
@@ -31,7 +31,7 @@ function createLog(dataLog) {
  * Create file log
  * @param array dataLog
  */
-function createFile(dataLog) {
+createFile = (dataLog) => {
     let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + ']';
 
     for (let i = 0; i < dataLog.length; i++) {
@@ -55,7 +55,7 @@ function createFile(dataLog) {
  * Update file log
  * @param array dataLog
  */
-function updateFile(dataLog) {
+updateFile = (dataLog) => {
     let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + ']';
 
     for (let i = 0; i < dataLog.length; i++) {
@@ -73,8 +73,4 @@ function updateFile(dataLog) {
 
         console.log("Successfully updated file");
     });
-}
-
-module.exports = {
-    createLog
 }
