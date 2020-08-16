@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/adopabianko/js-logger/issues"
   },
-  "homepage": "https://github.com/adopabianko/js-logger#readme"
+  "homepage": "https://github.com/adopabianko/js-logger#readme",
+  "dependencies": {
+    "mkdirp": "^1.0.4",
+    "moment": "^2.27.0"
+  }
 }

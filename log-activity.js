@@ -2,7 +2,7 @@ const fs = require('fs');
 const moment = require('moment');
 const mkdirp = require('mkdirp');
 
-let path = './logs/' + moment().format('YYYY') + '/' + moment().format('MM'); // Directory logs
+let path = './logs/' + moment().format('YYYY') + '/' + moment().format('MM'); // Directory log
 let filename = 'log_api_' + moment().format('DDMMYYYY') + '.log'; // Filename log
 
 exports.createLog = (dataLog) => {
@@ -13,17 +13,13 @@ exports.createLog = (dataLog) => {
             createFile(dataLog);
         }
     } else {
-        mkdirp(path, (err) => {
-            if (err) {
-                console.log("Failed to create folder");
-            } else {
-                if (fs.existsSync(filename)) { // Pengecekan apakah file sudah ada atau belum
-                    updateFile(dataLog);
-                } else {
-                    createFile(dataLog);
-                }
-            }
-        });
+        mkdirp.sync(path);
+
+        if (fs.existsSync(filename)) { // Pengecekan apakah file sudah ada atau belum
+            updateFile(dataLog);
+        } else {
+            createFile(dataLog);
+        }
     }
 }
 
