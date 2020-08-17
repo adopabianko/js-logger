@@ -1,3 +1,5 @@
+"use strict";
+
 const logLib = require('./log-activity');
 
 logLib.createLog(['GET', '119.110.87.74', 'https://www.google.com/', "param=param1", {"status": "00"}]);
