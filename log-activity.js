@@ -4,10 +4,13 @@ const fs = require('fs');
 const moment = require('moment');
 const mkdirp = require('mkdirp');
 
-let path = './logs/' + moment().format('YYYY') + '/' + moment().format('MM'); // Directory log
-let filename = 'log_api_' + moment().format('DDMMYYYY') + '.log'; // Filename log
+let path;
+let filename;
 
 exports.createLog = (dataLog) => {
+    path = './logs/' + moment().format('YYYY') + '/' + moment().format('MM'); // Directory log
+    filename = 'log_api_' + moment().format('DDMMYYYY') + '.log'; // Filename log
+
     if (fs.existsSync(path)) { // Pengecekan apakah folder sudah ada atau belum
         if (fs.existsSync(path + '/' +filename)) { // Pengecekan apakah file sudah ada atau belum
             updateFile(dataLog);
@@ -29,7 +32,7 @@ exports.createLog = (dataLog) => {
  * Create file log
  * @param array dataLog
  */
-createFile = (dataLog) => {
+function createFile(dataLog) {
     let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + ']';
 
     for (let i = 0; i < dataLog.length; i++) {
@@ -53,7 +56,7 @@ createFile = (dataLog) => {
  * Update file log
  * @param array dataLog
  */
-updateFile = (dataLog) => {
+function updateFile(dataLog) {
     let format_log = '[' + moment().format('YYYY-MM-DD HH:mm:ss') + ']';
 
     for (let i = 0; i < dataLog.length; i++) {
