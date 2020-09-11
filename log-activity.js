@@ -8,6 +8,9 @@ global.path = 'logs/' + moment().format('YYYY') + '/' + moment().format('MM'); /
 global.filename = 'log_api_' + moment().format('DDMMYYYY') + '.log'; // Filename log
 
 exports.createLog = (dataLog) => {
+    path = './logs/' + moment().format('YYYY') + '/' + moment().format('MM'); // Directory log
+    filename = 'log_api_' + moment().format('DDMMYYYY') + '.log'; // Filename log
+
     if (fs.existsSync(path)) { // Pengecekan apakah folder sudah ada atau belum
         if (fs.existsSync(path + '/' +filename)) { // Pengecekan apakah file sudah ada atau belum
             updateFile(dataLog);
